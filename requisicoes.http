@@ -1,0 +1,46 @@
+###
+
+GET http://localhost:3000/produtos HTTP/1.1
+
+###
+
+GET http://localhost:3000/produtos/1 HTTP/1.1
+
+###
+
+POST http://localhost:3000/produtos HTTP/1.1
+
+###
+
+PATCH http://localhost:3000/produtos/1 HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/produtos/1 HTTP/1.1
+
+###
+
+POST http://localhost:3000/produtos HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "nome": "Produto 1",
+    "preco": 10.99,
+    "emailEmpresa": "fajsfpjasopfja@gmaio.com",
+    "dataValidade": "2025-06-12"
+
+}
+
+###
+
+PATCH http://localhost:3000/produtos/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "message": "aaaa",
+    "nome": "Produto 2",
+    "preco": 5
+
+}
+###
