@@ -9,38 +9,78 @@ GET http://localhost:3000/produtos/1 HTTP/1.1
 ###
 
 POST http://localhost:3000/produtos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5vbWVVc3VhcmlvIjoiZGllZ28yIiwiaWF0IjoxNzQ5MjU2MTg2LCJleHAiOjE3NDkyNTk3ODZ9.eGCqL6CcVZYipcMjOoxMYI3IXXVDU5LOZKPB1-F9YNI
+
+{
+  "nome": "Produto 1",
+  "preco": 9.99,
+  "emailEmpresa": "teste@mail.com",
+  "dataValidade": "2025-06-12",
+  "categoriaId": 1
+}
 
 ###
-
 PATCH http://localhost:3000/produtos/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nome": "Produto 2",
+    "preco": 9.99
+}
 
 ###
-
 DELETE http://localhost:3000/produtos/1 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/produtos HTTP/1.1
+### Categorias
+
+GET http://localhost:3000/categorias HTTP/1.1
+
+###
+
+GET http://localhost:3000/categorias/1 HTTP/1.1
+###
+
+POST http://localhost:3000/categorias HTTP/1.1
+Content-Type: application/json
+
+{
+    "nome": "Bebidas",
+    "ativa": true
+}
+
+###
+PATCH http://localhost:3000/categorias/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nome": "Categoria 7",
+    "ativa": true
+}
+
+###
+DELETE http://localhost:3000/categorias/2 HTTP/1.1
+
+### Realizar registro
+
+POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
 
-    "nome": "Produto 1",
-    "preco": 10.99,
-    "emailEmpresa": "fajsfpjasopfja@gmaio.com",
-    "dataValidade": "2025-06-12"
+"nomeUsuario":"diego2",
+"nome":"Diego Rod2",
+"senha":"123456",
+"email":"diego2@mail.com"
 
 }
 
-###
-
-PATCH http://localhost:3000/produtos/1 HTTP/1.1
+### Realizar login
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "message": "aaaa",
-    "nome": "Produto 2",
-    "preco": 5
-
+"nomeUsuario":"diego2","senha":"123456"
 }
-###

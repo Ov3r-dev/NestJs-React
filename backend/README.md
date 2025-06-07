@@ -15,4 +15,4 @@ Joao Pedro Natividade Ferreira - UC23101309
 Guilherme Ayala Cysne - UC23100516
 Guilherme Gutierres da Silva Guimaraes - UC23100253
 Gustav Victor Silva Ribeiro - UC23100223
-Juan Pablo Ferraz Torres Valladas - UC22201199 
+Juan Pablo Ferraz Torres Valladas - UC22201199
