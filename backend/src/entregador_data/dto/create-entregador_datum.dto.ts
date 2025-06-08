@@ -1,20 +1,24 @@
-import { IsString, IsEmail, IsDateString, IsNumber, Min, Max } from 'class-validator';
+import { IsString, IsEmail } from 'class-validator';
 
-export class CreateEntregadorDatumDto {
-  @IsString({ message: 'Necessário que nome seja String' })
+export class CreateEntregadorDto {
+  @IsString()
   nome: string;
 
-  @IsNumber()
-  @Min(0, { message: 'Necessário que valor seja maior que 0' })
-  @Max(10, { message: 'Necessário que valor seja até 10.0' })
-  preco: number;
+  @IsString()
+  cpf: string;
 
-  @IsEmail({}, { message: 'E-mail inválido' })
-  emailEmpresa: string;
+  @IsString()
+  telefone: string;
 
-  @IsDateString({}, { message: 'Data inválida' })
-  dataValidade: Date;
+  @IsString()
+  veiculo: string;
 
-  @IsNumber()
-  categoriaId: number;
+  @IsString()
+  nomeUsuario: string;
+
+  @IsString()
+  senha: string;
+
+  @IsEmail()
+  email: string;
 }

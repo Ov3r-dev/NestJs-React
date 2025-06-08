@@ -1,26 +1,46 @@
-import { Injectable } from '@nestjs/common';
-import { CreateEntregadorDatumDto } from './dto/create-entregador_datum.dto';
-import { UpdateEntregadorDatumDto } from './dto/update-entregador_datum.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Entregador } from './entities/entregador_datum.entity';
+import { CreateEntregadorDto } from './dto/create-entregador_datum.dto';
+import { UpdateEntregadorDto } from './dto/update-entregador_datum.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
-export class EntregadorDataService {
-  create(createEntregadorDatumDto: CreateEntregadorDatumDto) {
-    return 'This action adds a new entregadorDatum';
-  }
+export class EntregadorService {
+  constructor(
+    @InjectRepository(Entregador)
+    private entregadorRepository: Repository<Entregador>,
+  ) {}
 
   findAll() {
-    return `This action returns all entregadorData`;
+    return this.entregadorRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} entregadorDatum`;
+  async findOne(id: number) {
+    const entregador = await this.entregadorRepository.findOne({ where: { id } });
+    if (!entregador) throw new NotFoundException('Entregador não encontrado');
+    return entregador;
   }
 
-  update(id: number, updateEntregadorDatumDto: UpdateEntregadorDatumDto) {
-    return `This action updates a #${id} entregadorDatum`;
+  async update(id: number, dto: UpdateEntregadorDto) {
+    await this.findOne(id);
+    await this.entregadorRepository.update(id, dto);
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} entregadorDatum`;
+  async remove(id: number) {
+    await this.findOne(id);
+    return this.entregadorRepository.delete(id);
   }
+
+  async create(dto: CreateEntregadorDto) {
+  const hashedPassword = await bcrypt.hash(dto.senha, 10);
+  const entregador = this.entregadorRepository.create({
+    ...dto,
+    senha: hashedPassword,
+    role: 'ENTREGADOR',
+  });
+  return this.entregadorRepository.save(entregador);
+}
 }

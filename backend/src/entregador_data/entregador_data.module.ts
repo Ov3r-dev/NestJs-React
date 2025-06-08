@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { EntregadorDataService } from './entregador_data.service';
-import { EntregadorDataController } from './entregador_data.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Entregador } from './entities/entregador_datum.entity';
+import { EntregadorService } from './entregador_data.service';
+import { EntregadorController } from './entregador_data.controller';
 
 @Module({
-  controllers: [EntregadorDataController],
-  providers: [EntregadorDataService],
+  imports: [TypeOrmModule.forFeature([Entregador])],
+  controllers: [EntregadorController],
+  providers: [EntregadorService],
 })
-export class EntregadorDataModule {}
+export class EntregadorModule {}

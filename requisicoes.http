@@ -63,19 +63,6 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/categorias/2 HTTP/1.1
 
-### Realizar registro
-
-POST http://localhost:3000/auth/register
-Content-Type: application/json
-
-{
-
-"nomeUsuario":"diego2",
-"nome":"Diego Rod2",
-"senha":"123456",
-"email":"diego2@mail.com"
-
-}
 
 ### Realizar login
 POST http://localhost:3000/auth/login
@@ -84,3 +71,101 @@ Content-Type: application/json
 {
 "nomeUsuario":"diego2","senha":"123456"
 }
+
+###
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+"nomeUsuario":"diego2",
+"nome":"Diego Rod2",
+"senha":"123456",
+"email":"diego2@mail.com"
+}
+
+### Inserir sem token válido (Erro)
+POST http://localhost:3000/produtos HTTP/1.1
+Content-Type: application/json
+
+{
+"nome": "Produto 101",
+"preco": 7.78,
+"emailEmpresa": "mail@mail.com",
+"dataValidade": "2025-06-14",
+"categoria": 1
+
+}
+### Inserir com token válido
+POST http://localhost:3000/produtos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsIm5vbWVVc3VhcmlvIjoiZGllZ2
+8yIiwiaWF0IjoxNzQ3MjYyNTkzLCJleHAiOjE3NDcyNjYxOTN9.Ldoax3snS0XKhH04za3fksTf
+qLkWSZdQsRhgudLsM0Q
+{
+
+"nome": "Produto 101",
+"preco": 7.78,
+"emailEmpresa": "mail@mail.com",
+"dataValidade": "2025-06-14",
+"categoria": 1
+
+}
+### Listar todos os produtos
+
+GET http://localhost:3000/produtos HTTP/1.1
+
+### Listar produto específico
+
+GET http://localhost:3000/produtos/10 HTTP/1.1
+
+### Editar produto utilizando token válido
+
+PATCH http://localhost:3000/produtos/10 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5vbWVVc3VhcmlvIjoiZGllZ2
+8iLCJpYXQiOjE3NDcyNDgxMjgsImV4cCI6MTc0NzI1MTcyOH0.hBkwTM5WYlkJ9Oh0WgyjRNGAW
+xncup4Kq2uYnaI0EUE
+{
+
+"nome": "Produto 88",
+"preco": 8.88
+
+}
+
+### Remover produto utilizando token válido
+
+DELETE http://localhost:3000/produtos/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5vbWVVc3VhcmlvIjoiZGllZ2
+8iLCJpYXQiOjE3NDcyNDgxMjgsImV4cCI6MTc0NzI1MTcyOH0.hBkwTM5WYlkJ9Oh0WgyjRNGAW
+xncup4Kq2uYnaI0EUE
+
+###
+
+POST http://localhost:3000/entregadores
+Content-Type: application/json
+
+{
+  "nome": "João da Moto",
+  "cpf": "12345678900",
+  "telefone": "61999999999",
+  "veiculo": "Moto",
+  "nomeUsuario": "joaomoto",
+  "senha": "123456",
+  "email": "joao.moto@email.com"
+}
+
+###
+
+GET http://localhost:3000/entregadores
+
+###
+
+GET http://localhost:3000/entregadores/1

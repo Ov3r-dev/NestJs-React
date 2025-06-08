@@ -1,18 +1,22 @@
-Comandos:
-npx -p @nestjs/cli nest new
-Ao utilizar o comando "nest -h" no terminal, devera retornar uma colecao de "esquemas"
-npx -p @nestjs/cli nest g resource produtos
-npm install @nestjs/typeorm typeorm sqlite3
-npm run start:dev
-nest g resource categorias
-npm install class-validator class-t
-npm install --save-dev ts-node type
-npx tsc --init
+Instalar dependências:
 
-Creditos:
-Joao Pedro Goncalves de Oliveira - UC23100016
-Joao Pedro Natividade Ferreira - UC23101309
-Guilherme Ayala Cysne - UC23100516
-Guilherme Gutierres da Silva Guimaraes - UC23100253
-Gustav Victor Silva Ribeiro - UC23100223
-Juan Pablo Ferraz Torres Valladas - UC22201199
+Instalar Nest: npm install -g @nestjs/cli
+Instalar Prittier: npm install --save-dev prettier
+Instalar Pacores do Class-Validator: npm i class-validator class-transformer
+Instalar TypeOrm e sqlite3: npm install @nestjs/typeorm typeorm sqlite3
+Instalar pacote do Swagger: npm install --save @nestjs/swagger (Acessar Swagger: http://localhost:3000/api)
+Instalar dependências do JWT: npm install @nestjs/jwt @nestjs/passport passport passport-jwt bcrypt
+Instalar dependências do bcrypt: npm install --save-dev @types/passport-jwt @types/bcrypt
+
+Extenções utilizadas:
+Nest Cli
+SQLite Viewer
+
+Sites e Apps Usados:
+https://jwt.io/
+https://www.beekeeperstudio.io/
+
+Comandos: 
+Rodar servidror: npm run start:dev
+Rodar Prittier: npx prettier --write .
+Criar novo resource: nest g resourse <"nome">

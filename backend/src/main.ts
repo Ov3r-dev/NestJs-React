@@ -13,8 +13,8 @@ async function bootstrap() {
     .setDescription('Uma lojinha simples mas não simplista!')
     .setVersion('0.1')
     .build();
-  
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
+
+  const documentFactory =  SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 
   await app.listen(process.env.PORT ?? 3000);

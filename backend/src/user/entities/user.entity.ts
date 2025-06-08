@@ -1,5 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+
+
+export enum UserRole {
+  USER = 'USER',
+  MANAGER = 'MANAGER',
+  ADMIN = 'ADMIN',
+}
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -16,6 +24,12 @@ export class User {
 
   @Column()
   email: string;
+
+  @Column({
+    type: 'varchar',
+    default: UserRole.USER,
+  })
+  role: UserRole;
   @BeforeInsert()
   @BeforeUpdate()
   async hashPassword() {

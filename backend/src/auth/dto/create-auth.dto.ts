@@ -20,4 +20,3 @@ export class LoginDto {
   @IsString()
   senha: string;
 }
-

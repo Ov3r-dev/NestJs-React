@@ -1,4 +1,4 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateEntregadorDatumDto } from './create-entregador_datum.dto';
+import { PartialType } from '@nestjs/swagger';
+import { CreateEntregadorDto } from './create-entregador_datum.dto';
 
-export class UpdateEntregadorDatumDto extends PartialType(CreateEntregadorDatumDto) {}
+export class UpdateEntregadorDto extends PartialType(CreateEntregadorDto) {}

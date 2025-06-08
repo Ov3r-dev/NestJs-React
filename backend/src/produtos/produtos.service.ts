@@ -33,7 +33,7 @@ ${createProdutoDto.categoriaId} não encontrada`);
     return this.produtoRepository.save(produto);
   }
 
-  async findAll(): Promise<Produto[]> {
+  async findAll(categoriaId: number | null): Promise<Produto[]> {
     return await this.produtoRepository.find();
   }
 

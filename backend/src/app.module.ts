@@ -6,9 +6,11 @@ import { Categoria } from './categorias/entities/categoria.entity';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { EntregadorModule } from './entregador_data/entregador_data.module';
 
 @Module({
   imports: [
+    EntregadorModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
