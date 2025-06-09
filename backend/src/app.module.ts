@@ -7,10 +7,13 @@ import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { EntregadorModule } from './entregador_data/entregador_data.module';
+import { ClienteModule } from './cliente/cliente.module';
+import { CarrinhoModule } from './carrinho/carrinho.module';
 
 @Module({
   imports: [
     EntregadorModule,
+    CarrinhoModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
@@ -21,6 +24,8 @@ import { EntregadorModule } from './entregador_data/entregador_data.module';
     CategoriasModule,
     UserModule,
     AuthModule,
+    ClienteModule,
+    CarrinhoModule,
   ],
 })
 export class AppModule {}

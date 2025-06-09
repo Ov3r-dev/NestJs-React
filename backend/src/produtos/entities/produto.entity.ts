@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Categoria } from 'src/categorias/entities/categoria.entity';
+import { ManyToMany } from 'typeorm';
+import { Cliente } from 'src/cliente/entities/cliente.entity';
 
 @Entity()
 export class Produto {
@@ -31,4 +31,8 @@ export class Produto {
 
   @Column()
   categoriaId: number;
+  
+  @ManyToMany(() => Cliente, cliente => cliente.favoritos)
+  clientesFavoritaram: Cliente[];
+
 }
